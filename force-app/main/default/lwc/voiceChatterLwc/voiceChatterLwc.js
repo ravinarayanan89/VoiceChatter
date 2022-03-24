@@ -12,7 +12,7 @@ export default class VoiceChatterLwc extends LightningElement {
 
     connectedCallback() {
         //listen for key press events 
-        document.addEventListener('keypress', this.listenForKeyPressEvts.bind(this));
+        document.addEventListener('keydown', this.listenForKeyPressEvts.bind(this));
         let utility = document.querySelector('div[data-target-selection-name = "'+this.LWC_NAME+'"]');
         if(utility){
                 utility.className = 'slds-hide';
@@ -63,7 +63,7 @@ export default class VoiceChatterLwc extends LightningElement {
     listenForKeyPressEvts(event) {
         
         //Validate the user key press action and ensure CTRL AND s pressed together
-        if (event.ctrlKey && event.key == 's') {
+        if (event.ctrlKey) {
             let chatterToolBar = document.getElementsByClassName(this.CHATTER_TOOLBAR_CLASS);
             if (chatterToolBar) {
                 for (var item of chatterToolBar) {
